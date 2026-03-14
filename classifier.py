@@ -51,4 +51,7 @@ def classify_intent(message):
         return json.loads(text)
 
     except Exception as e:
+        print(f"[Classifier ERROR] {e}")
+        if 'data' in locals() and 'error' in data:
+            print(f"[API ERROR] {data['error']}")
         return {"intent": "unclear", "confidence": 0.0}
